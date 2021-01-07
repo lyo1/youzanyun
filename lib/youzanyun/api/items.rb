@@ -2,7 +2,7 @@
 
 module Youzanyun
   module Api
-    module Item
+    module Items
       # 获取单个商品
       def items_inventory_get(options)
         http_get(url(".inventory.get"), options)
