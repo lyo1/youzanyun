@@ -15,11 +15,11 @@ module Youzanyun
     attr_accessor :access_token, :token_type, :redis_key
 
     def initialize(client_id, client_secret, grant_id, options={})
-      @client_id = client_id
-      @client_secret = client_secret
-      @expired_at = Time.now.to_i
-      @grant_id =  grant_id
-      @redis_key = security_redis_key(options[:redis_key] || "youzanyun_#{client_id}")
+      self.client_id = client_id
+      self.client_secret = client_secret
+      self.expired_at = Time.now.to_i
+      self.grant_id =  grant_id
+      self.redis_key = security_redis_key(options[:redis_key] || "youzanyun_#{client_id}")
       super()
     end
 
@@ -56,7 +56,7 @@ module Youzanyun
     end
 
     def verify?(event_sign:, body:)
-      str = @client_id + body + @client_secret
+      str = client_id + body + client_secret
       Digest::MD5.hexdigest(str) == event_sign
     end
 
