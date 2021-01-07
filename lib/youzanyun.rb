@@ -34,9 +34,9 @@ module Youzanyun
       load_json(resource(post_api_url).post(JSON.generate(post_body), params: url_params))
     end
 
-    def http_delete_without_token(url, delete_body={}, url_params={}, endpoint="plain")
+    def http_delete_without_token(url, delete_body = {}, url_params = {}, endpoint="api")
       delete_api_url = endpoint_url(endpoint, url)
-      load_json(resource(delete_api_url).delete(params: url_params,raw_response: true))
+      load_json(resource(delete_api_url).delete(params: url_params, raw_response: true))
     end
 
     def resource(url)
@@ -58,7 +58,7 @@ module Youzanyun
     end
 
     def calculate_expire(expires_in)
-      expires_in.to_i - key_expired.to_i * 1000
+      expires_in.to_i / 1000 - key_expired.to_i
     end
   end
 end
