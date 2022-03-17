@@ -4,8 +4,8 @@ module Youzanyun
   module Api
     module Trade
       # 查询单笔交易详情接口
-      def trade_post(options)
-        http_get(url(".get"), options)
+      def trade_get(options)
+        http_post(url(".get"), options)
       end
 
       private
