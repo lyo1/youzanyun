@@ -10,6 +10,9 @@ module Youzanyun
     include MonitorMixin
 
     include Api::Item
+    include Api::Items
+    include Api::Trade
+    include Api::Trades
 
     attr_accessor :client_id, :client_secret, :grant_id, :expired_at
     attr_accessor :access_token, :token_type, :redis_key
